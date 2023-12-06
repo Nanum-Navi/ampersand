@@ -1,0 +1,47 @@
+{
+  "name": "@nanumnavi/utils",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "require": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "src/index.ts",
+  "files": [
+    "dist",
+    "esm"
+  ],
+  "scripts": {
+    "build": "rm -rf dist esm && tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir dist",
+    "prepack": "pnpm build",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-typescript": "^7.23.3",
+    "@babel/runtime": "^7.23.5",
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__preset-env": "^7.9.6",
+    "typescript": "4.8.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "require": "./dist/index.js",
+        "import": "./esm/index.mjs",
+        "types": "./dist/index.d.ts"
+      },
+      "./package.json": "./package.json"
+    },
+    "import": "./esm/index.mjs",
+    "main": "./dist/index.js",
+    "module": "./esm/index.mjs",
+    "types": "./dist/index.d.ts"
+  },
+  "readme": "ERROR: No README data found!"
+}

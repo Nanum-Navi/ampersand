@@ -1,0 +1,9 @@
+node_modules
+
+dist
+
+*.tsbuildinfo
+*.tgz
+*.map
+*.log
+*.DS_Store
