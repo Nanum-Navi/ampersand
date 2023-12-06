@@ -6,6 +6,7 @@ export * from "./escapeHTML";
 export * from "./getScrollPercent";
 export * from "./getScrollYOffset";
 export * from "./groupBy";
+export * from "./isNotNil";
 export * from "./mapValues";
 export * from "./Masker";
 export * from "./maskName";

@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.5",
-    "@nanumnavi/utils": "workspace:^1.0.0"
+    "@nanumnavi/utils": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
@@ -46,5 +46,6 @@
     "module": "./esm/index.mjs",
     "types": "./dist/index.d.ts"
   },
-  "readme": "ERROR: No README data found!"
+  "readme": "ERROR: No README data found!",
+  "gitHead": "e83b7af439faf6f94a3be212c0ef059223e583a7"
 }
