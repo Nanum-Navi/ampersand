@@ -1,6 +1,6 @@
 {
   "name": "@nanumnavi/react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -22,8 +22,8 @@
   "dependencies": {
     "@babel/runtime": "^7.23.5",
     "@nanumnavi/storage": "^1.0.0",
-    "@nanumnavi/utils": "^1.0.0",
     "@nanumnavi/style": "workspace:^1.0.0",
+    "@nanumnavi/utils": "^1.0.1",
     "classnames": "^2.3.1",
     "lodash.debounce": "^4.0.8"
   },
