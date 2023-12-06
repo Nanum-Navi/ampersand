@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "paths": {
+      "styled-components": ["styled-components.d.ts"]
+    }
+  },
+  "include": ["src", "src/*.d.ts"]
+}
