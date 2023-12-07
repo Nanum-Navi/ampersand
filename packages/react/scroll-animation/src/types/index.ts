@@ -1,1 +1,1 @@
-export * from "./WindowScrollPosition";
+export * from './WindowScrollPosition';

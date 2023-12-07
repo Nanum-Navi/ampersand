@@ -1,4 +1,4 @@
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from 'next/navigation';
 
 interface Options<T> {
   parser?: (val: string) => T;
@@ -6,14 +6,8 @@ interface Options<T> {
 }
 
 export function useQueryParam<T = string>(name: string): T | undefined;
-export function useQueryParam<T = string>(
-  name: string,
-  options: Options<T> & { required: true }
-): T;
-export function useQueryParam<T = string>(
-  name: string,
-  options: Options<T>
-): T | undefined;
+export function useQueryParam<T = string>(name: string, options: Options<T> & { required: true }): T;
+export function useQueryParam<T = string>(name: string, options: Options<T>): T | undefined;
 export function useQueryParam<T = string>(name: string, options?: Options<T>) {
   const searchParams = useSearchParams();
   const value = searchParams.get(name);

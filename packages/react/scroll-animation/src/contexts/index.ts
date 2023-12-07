@@ -1,1 +1,1 @@
-export * from "./ScrollProgressContext";
+export * from './ScrollProgressContext';

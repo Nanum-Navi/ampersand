@@ -1,2 +1,2 @@
-export * from "./ScrollProgressController";
-export * from "./ScrollRevealAnimation";
+export * from './ScrollProgressController';
+export * from './ScrollRevealAnimation';

@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer } from 'react';
 
 const updater = (num: number): number => (num + 1) % 1_000_000;
 

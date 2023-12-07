@@ -1,3 +1,3 @@
-export * from "./clipProgress";
-export * from "./getValueWithoutUnit";
-export * from "./sliceProgress";
+export * from './clipProgress';
+export * from './getValueWithoutUnit';
+export * from './sliceProgress';

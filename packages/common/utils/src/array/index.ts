@@ -1,3 +1,3 @@
-export * from "./isNonEmptyArray";
-export * from "./last";
-export * from "./NonEmptyArray";
+export * from './isNonEmptyArray';
+export * from './last';
+export * from './NonEmptyArray';

@@ -1,9 +1,9 @@
-import { RefObject, useContext, useRef } from "react";
-import { ScrollProgressContext } from "../contexts";
-import { WindowScrollPosition } from "../types";
-import { clipProgress, getValueWithoutUnit } from "../utils";
+import { RefObject, useContext, useRef } from 'react';
+import { ScrollProgressContext } from '../contexts';
+import { WindowScrollPosition } from '../types';
+import { clipProgress, getValueWithoutUnit } from '../utils';
 
-type TriggerHookAlias = "onEnter" | "onCenter" | "onLeave";
+type TriggerHookAlias = 'onEnter' | 'onCenter' | 'onLeave';
 type TriggerHook = TriggerHookAlias | number;
 
 const triggerOffsetWeightByTriggerHook: Record<TriggerHookAlias, number> = {
@@ -51,39 +51,29 @@ function calculateDurationMultipliedByPercent(value: number, percent: number) {
   return Math.max(value * (percent / 100), 1);
 }
 
-function calculateScrollDuration(
-  base: number,
-  windowScrollPosition: WindowScrollPosition,
-  duration: string | number
-) {
+function calculateScrollDuration(base: number, windowScrollPosition: WindowScrollPosition, duration: string | number) {
   if (base === 0 || duration === 0) {
     return 1;
   }
 
-  if (typeof duration === "number") {
+  if (typeof duration === 'number') {
     return duration;
   }
 
   try {
-    if (duration.endsWith("%")) {
+    if (duration.endsWith('%')) {
       const percentValue = getValueWithoutUnit(duration);
       return calculateDurationMultipliedByPercent(base, percentValue);
     }
 
-    if (duration.endsWith("vw")) {
+    if (duration.endsWith('vw')) {
       const vwValue = getValueWithoutUnit(duration);
-      return calculateDurationMultipliedByPercent(
-        windowScrollPosition.width,
-        vwValue
-      );
+      return calculateDurationMultipliedByPercent(windowScrollPosition.width, vwValue);
     }
 
-    if (duration.endsWith("vh")) {
+    if (duration.endsWith('vh')) {
       const vhValue = getValueWithoutUnit(duration);
-      return calculateDurationMultipliedByPercent(
-        windowScrollPosition.height,
-        vhValue
-      );
+      return calculateDurationMultipliedByPercent(windowScrollPosition.height, vhValue);
     }
   } catch {
     // Do nothing
@@ -105,9 +95,7 @@ function calculateScrollProgress({
   duration: number | string;
 }): { x: number; y: number } {
   const triggerOffsetWeight =
-    typeof triggerHook === "number"
-      ? triggerHook
-      : triggerOffsetWeightByTriggerHook[triggerHook] ?? 1;
+    typeof triggerHook === 'number' ? triggerHook : triggerOffsetWeightByTriggerHook[triggerHook] ?? 1;
 
   return {
     x:
@@ -123,8 +111,8 @@ function calculateScrollProgress({
  * ref가 화면 내에 있을 때 얼마나 스크롤을 진행했는지 계산합니다.
  */
 export function useScrollProgress<T extends HTMLElement>({
-  triggerHook = "onCenter",
-  duration = "100%",
+  triggerHook = 'onCenter',
+  duration = '100%',
   clip = false,
 }: Options = {}): {
   ref: RefObject<T>;
@@ -135,13 +123,8 @@ export function useScrollProgress<T extends HTMLElement>({
   const windowScrollPosition = useContext(ScrollProgressContext);
   const rect = ref.current?.getBoundingClientRect();
 
-  if (
-    process.env.NODE_ENV === "development" &&
-    windowScrollPosition === undefined
-  ) {
-    throw new Error(
-      "`useScrollProgress`는 `<ScrollProgressController>` 안에서만 사용할 수 있습니다."
-    );
+  if (process.env.NODE_ENV === 'development' && windowScrollPosition === undefined) {
+    throw new Error('`useScrollProgress`는 `<ScrollProgressController>` 안에서만 사용할 수 있습니다.');
   }
 
   if (windowScrollPosition === undefined || rect === undefined) {

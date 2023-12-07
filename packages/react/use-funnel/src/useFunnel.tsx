@@ -1,39 +1,27 @@
-import { assert } from "@nanumnavi/assert";
-import { safeSessionStorage } from "@nanumnavi/storage";
-import { useQueryParam } from "@nanumnavi/use-query-param";
-import { QS } from "@nanumnavi/utils";
-import deepEqual from "fast-deep-equal";
-import { useRouter } from "next/router.js";
-import {
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { useQuery } from "react-query";
-import { Funnel, FunnelProps, Step, StepProps } from "./Funnel";
-import { NonEmptyArray } from "./models";
+import { assert } from '@nanumnavi/assert';
+import { safeSessionStorage } from '@nanumnavi/storage';
+import { useQueryParam } from '@nanumnavi/use-query-param';
+import { QS } from '@nanumnavi/utils';
+import deepEqual from 'fast-deep-equal';
+import { useRouter } from 'next/router.js';
+import { SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useQuery } from 'react-query';
+import { Funnel, FunnelProps, Step, StepProps } from './Funnel';
+import { NonEmptyArray } from './models';
 
 interface SetStepOptions {
-  stepChangeType?: "push" | "replace";
+  stepChangeType?: 'push' | 'replace';
   preserveQuery?: boolean;
   query?: Record<string, any>;
 }
 
-type RouteFunnelProps<Steps extends NonEmptyArray<string>> = Omit<
-  FunnelProps<Steps>,
-  "steps" | "step"
->;
+type RouteFunnelProps<Steps extends NonEmptyArray<string>> = Omit<FunnelProps<Steps>, 'steps' | 'step'>;
 
-type FunnelComponent<Steps extends NonEmptyArray<string>> = ((
-  props: RouteFunnelProps<Steps>
-) => JSX.Element) & {
+type FunnelComponent<Steps extends NonEmptyArray<string>> = ((props: RouteFunnelProps<Steps>) => JSX.Element) & {
   Step: (props: StepProps<Steps>) => JSX.Element;
 };
 
-const DEFAULT_STEP_QUERY_KEY = "funnel-step";
+const DEFAULT_STEP_QUERY_KEY = 'funnel-step';
 
 export const useFunnel = <Steps extends NonEmptyArray<string>>(
   steps: Steps,
@@ -46,13 +34,8 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
     initialStep?: Steps[number];
     onStepChange?: (name: Steps[number]) => void;
   }
-): readonly [
-  FunnelComponent<Steps>,
-  (step: Steps[number], options?: SetStepOptions) => void
-] & {
-  withState: <
-    StateExcludeStep extends Record<string, unknown> & { step?: never }
-  >(
+): readonly [FunnelComponent<Steps>, (step: Steps[number], options?: SetStepOptions) => void] & {
+  withState: <StateExcludeStep extends Record<string, unknown> & { step?: never }>(
     initialState: StateExcludeStep
   ) => [
     FunnelComponent<Steps>,
@@ -60,24 +43,21 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
     (
       next:
         | Partial<StateExcludeStep & { step: Steps[number] }>
-        | ((
-            next: Partial<StateExcludeStep & { step: Steps[number] }>
-          ) => StateExcludeStep & { step: Steps[number] })
+        | ((next: Partial<StateExcludeStep & { step: Steps[number] }>) => StateExcludeStep & { step: Steps[number] })
     ) => void
   ];
 } => {
   const router = useRouter();
   const stepQueryKey = options?.stepQueryKey ?? DEFAULT_STEP_QUERY_KEY;
 
-  assert(steps.length > 0, "steps가 비어있습니다.");
+  assert(steps.length > 0, 'steps가 비어있습니다.');
 
   const FunnelComponent = useMemo(
     () =>
       Object.assign(
         function RouteFunnel(props: RouteFunnelProps<Steps>) {
           // eslint-disable-next-line react-hooks/rules-of-hooks
-          const step =
-            useQueryParam<Steps[number]>(stepQueryKey) ?? options?.initialStep;
+          const step = useQueryParam<Steps[number]>(stepQueryKey) ?? options?.initialStep;
 
           assert(
             step != null,
@@ -107,12 +87,12 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
       options?.onStepChange?.(step);
 
       switch (setStepOptions?.stepChangeType) {
-        case "replace":
+        case 'replace':
           router.replace(url, undefined, {
             shallow: true,
           });
           return;
-        case "push":
+        case 'push':
         default:
           router.push(url, undefined, {
             shallow: true,
@@ -140,7 +120,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
   const setState = useCallback(
     (next: Partial<NextState> | ((next: Partial<NextState>) => NextState)) => {
       let nextStepValue: Partial<NextState>;
-      if (typeof next === "function") {
+      if (typeof next === 'function') {
         nextStepValue = next(state);
       } else {
         nextStepValue = next;
@@ -167,9 +147,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
   }, [setStep, state]);
 
   const initializedRef = useRef(false);
-  function withState<State extends Record<string, unknown>>(
-    initialState: State
-  ) {
+  function withState<State extends Record<string, unknown>>(initialState: State) {
     if (!initializedRef.current) {
       setState(initialState);
       initializedRef.current = true;
@@ -183,9 +161,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
     FunnelComponent<Steps>,
     (step: Steps[number], options?: SetStepOptions) => Promise<void>
   ] & {
-    withState: <
-      StateExcludeStep extends Record<string, unknown> & { step?: never }
-    >(
+    withState: <StateExcludeStep extends Record<string, unknown> & { step?: never }>(
       initialState: StateExcludeStep
     ) => [
       FunnelComponent<Steps>,
@@ -193,9 +169,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
       (
         next:
           | Partial<StateExcludeStep & { step: Steps[number] }>
-          | ((
-              next: Partial<StateExcludeStep & { step: Steps[number] }>
-            ) => StateExcludeStep & { step: Steps[number] })
+          | ((next: Partial<StateExcludeStep & { step: Steps[number] }>) => StateExcludeStep & { step: Steps[number] })
       ) => void
     ];
   };
@@ -211,12 +185,9 @@ function createFunnelStateId(id: string): FunnelStateId {
  * NOTE: 이후 Secure Storage 등 다른 스토리지를 사용하도록 스펙이 변경될 수 있으므로, Asynchronous 함수로 만듭니다.
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function createFunnelStorage<T>(
-  funnelStateId: FunnelStateId,
-  storageType = "sessionStorage"
-): FunnelStorage<T> {
+function createFunnelStorage<T>(funnelStateId: FunnelStateId, storageType = 'sessionStorage'): FunnelStorage<T> {
   switch (storageType) {
-    case "sessionStorage":
+    case 'sessionStorage':
       return {
         get: async () => {
           const d = safeSessionStorage.get(funnelStateId);
@@ -233,7 +204,7 @@ function createFunnelStorage<T>(
         },
       };
     default:
-      throw new Error("정확한 스토리지 타입을 명시해주세요.");
+      throw new Error('정확한 스토리지 타입을 명시해주세요.');
   }
 }
 
@@ -249,9 +220,7 @@ function useFunnelState<T extends Record<string, any>>(
 ) {
   const { pathname, basePath } = useRouter();
 
-  const storage =
-    options?.storage ??
-    createFunnelStorage<T>(createFunnelStateId(`${basePath}${pathname}`));
+  const storage = options?.storage ?? createFunnelStorage<T>(createFunnelStateId(`${basePath}${pathname}`));
   const persistentStorage = useRef(storage).current;
 
   const initialState = useQuery({
@@ -263,17 +232,15 @@ function useFunnelState<T extends Record<string, any>>(
     refetchOnReconnect: false,
   }).data;
 
-  const [_state, _setState] = useState<Partial<T>>(
-    initialState ?? defaultValue
-  );
+  const [_state, _setState] = useState<Partial<T>>(initialState ?? defaultValue);
 
   const setState = useCallback(
     (state: SetStateAction<Partial<T>>) => {
-      _setState((prev) => {
+      _setState(prev => {
         /**
          * React Batch Update 그리고 Local State와 Persistent Storage의 State의 일관성을 위해서 이렇게 작성했습니다.
          */
-        if (typeof state === "function") {
+        if (typeof state === 'function') {
           const newState = state(prev);
           persistentStorage.set(newState);
           return newState;

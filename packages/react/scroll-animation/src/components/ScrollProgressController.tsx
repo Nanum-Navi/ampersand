@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import { ScrollProgressContext } from "../contexts";
-import { useWindowScrollPosition } from "../hooks";
+import { ReactNode } from 'react';
+import { ScrollProgressContext } from '../contexts';
+import { useWindowScrollPosition } from '../hooks';
 
 interface Props {
   children?: ReactNode;
@@ -9,9 +9,5 @@ interface Props {
 export function ScrollProgressController({ children }: Props) {
   const windowScrollPosition = useWindowScrollPosition();
 
-  return (
-    <ScrollProgressContext.Provider value={windowScrollPosition}>
-      {children}
-    </ScrollProgressContext.Provider>
-  );
+  return <ScrollProgressContext.Provider value={windowScrollPosition}>{children}</ScrollProgressContext.Provider>;
 }

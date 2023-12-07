@@ -1,4 +1,4 @@
-import { safeLocalStorage, Storage } from "../../storage";
+import { safeLocalStorage, Storage } from '../../storage';
 
 export interface TypedStorageOptions<T> {
   storage?: Storage;

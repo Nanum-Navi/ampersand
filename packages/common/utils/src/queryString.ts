@@ -9,8 +9,8 @@
 export function createQueryString(params: Record<string, any>) {
   const queryString = createSearchParamString(params);
 
-  if (queryString === "") {
-    return "";
+  if (queryString === '') {
+    return '';
   }
 
   return `?${queryString}`;
@@ -29,7 +29,7 @@ export function createSearchParamString(params: Record<string, any>) {
         .filter(([, value]) => value != null)
         .map(([key, value]) => {
           if (Array.isArray(value)) {
-            return value.map((x) => [key, x]);
+            return value.map(x => [key, x]);
           }
           return [[key, value]];
         })
@@ -37,7 +37,7 @@ export function createSearchParamString(params: Record<string, any>) {
     )
       .toString()
       // RFC1738 -> RFC3986 스펙에 맞게 space character를 변환합니다.
-      .replace(/\+/g, "%20")
+      .replace(/\+/g, '%20')
   );
 }
 
@@ -48,16 +48,14 @@ export function createSearchParamString(params: Record<string, any>) {
  * parseQueryString을 첫 번째 파라미터 없이 사용하는 것은 SSR unsafe합니다.
  */
 export function parseQueryString<Result = Record<string, string>>(
-  queryString: string = typeof location !== "undefined" ? location.search : ""
+  queryString: string = typeof location !== 'undefined' ? location.search : ''
 ): Result {
-  const query = queryString.trim().replace(/^[?#&]/, "");
+  const query = queryString.trim().replace(/^[?#&]/, '');
 
   return fromEntries(new URLSearchParams(query)) as any;
 }
 
-function fromEntries<T extends readonly [string | number, unknown]>(
-  iterable: Iterable<T>
-) {
+function fromEntries<T extends readonly [string | number, unknown]>(iterable: Iterable<T>) {
   const result: Record<string | number | symbol, T[1]> = {};
 
   for (const [key, value] of Array.from(iterable)) {
@@ -76,10 +74,7 @@ function fromEntries<T extends readonly [string | number, unknown]>(
 }
 
 function getQueryString(name: string): string | undefined;
-function getQueryString<T>(
-  name: string,
-  parser: (val: string) => T
-): T | undefined;
+function getQueryString<T>(name: string, parser: (val: string) => T): T | undefined;
 function getQueryString<T = string>(name: string, parser?: (val: string) => T) {
   const value = QS.parse<{ [name: string]: string | undefined }>()[name];
 

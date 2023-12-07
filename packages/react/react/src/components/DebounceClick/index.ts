@@ -1,1 +1,1 @@
-export * from "./DebounceClick";
+export * from './DebounceClick';

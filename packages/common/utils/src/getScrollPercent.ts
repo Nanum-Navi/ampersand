@@ -1,5 +1,5 @@
-import { isServer } from "./device/index";
-import { getScrollYOffset } from "./getScrollYOffset";
+import { isServer } from './device/index';
+import { getScrollYOffset } from './getScrollYOffset';
 
 export function getScrollPercent() {
   if (isServer() || !document.documentElement) {
@@ -9,7 +9,6 @@ export function getScrollPercent() {
   const doc = document.documentElement;
   const body = document.body;
   const scrollTop = getScrollYOffset();
-  const scrollHeight =
-    (doc.scrollHeight || body.scrollHeight) - doc.clientHeight;
+  const scrollHeight = (doc.scrollHeight || body.scrollHeight) - doc.clientHeight;
   return (scrollTop / scrollHeight) * 100;
 }

@@ -1,13 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 interface Options {
   throttle?: boolean;
 }
 
-export function useScrollEventListener(
-  onScroll: () => void,
-  { throttle = true }: Options = {}
-): void {
+export function useScrollEventListener(onScroll: () => void, { throttle = true }: Options = {}): void {
   const isQueuedRef = useRef(false);
 
   useEffect(() => {
@@ -26,13 +23,13 @@ export function useScrollEventListener(
       isQueuedRef.current = true;
     };
 
-    window.addEventListener("resize", handleScrollEvent);
-    window.addEventListener("scroll", handleScrollEvent);
+    window.addEventListener('resize', handleScrollEvent);
+    window.addEventListener('scroll', handleScrollEvent);
     handleScrollEvent();
 
     return () => {
-      window.removeEventListener("resize", handleScrollEvent);
-      window.removeEventListener("scroll", handleScrollEvent);
+      window.removeEventListener('resize', handleScrollEvent);
+      window.removeEventListener('scroll', handleScrollEvent);
     };
   }, [onScroll, throttle]);
 }

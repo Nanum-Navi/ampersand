@@ -1,15 +1,14 @@
-import { PropsWithChildren, useEffect, useState } from "react";
-import { styled } from "@nanumnavi/style";
-import { buildContext } from "../..";
-import SelectorItem from "./SelectorItem";
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { styled } from '@nanumnavi/style';
+import { buildContext } from '../..';
+import SelectorItem from './SelectorItem';
 
 interface SelectorContextProps {
   selectedId: number;
   setSelectedId: (selectorId: number) => void;
 }
 
-const [SelectorProvider, useSelector] =
-  buildContext<SelectorContextProps>("Selector");
+const [SelectorProvider, useSelector] = buildContext<SelectorContextProps>('Selector');
 
 interface SelectorListProps extends PropsWithChildren {
   defaultSelectedId?: number;

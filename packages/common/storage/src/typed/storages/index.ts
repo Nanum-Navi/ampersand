@@ -1,2 +1,2 @@
-export * from "./TypedStorage";
-export * from "./NumberTypedStorage";
+export * from './TypedStorage';
+export * from './NumberTypedStorage';

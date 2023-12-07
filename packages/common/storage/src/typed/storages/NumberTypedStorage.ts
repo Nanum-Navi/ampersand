@@ -1,4 +1,4 @@
-import { TypedStorage } from "./TypedStorage";
+import { TypedStorage } from './TypedStorage';
 
 export class NumberTypedStorage extends TypedStorage<number> {
   public increase(offset: number = 1): void {

@@ -1,16 +1,12 @@
-import { DependencyList, useCallback, useRef } from "react";
-import { usePreservedCallback } from "./usePreservedCallback";
+import { DependencyList, useCallback, useRef } from 'react';
+import { usePreservedCallback } from './usePreservedCallback';
 
 const noop = () => {};
 
-export type EffectRef<E extends HTMLElement = HTMLElement> = (
-  element: E | null
-) => void;
+export type EffectRef<E extends HTMLElement = HTMLElement> = (element: E | null) => void;
 
 export type CleanupCallback = () => void;
-export type RefCallback<E extends HTMLElement = HTMLElement> = (
-  element: E
-) => CleanupCallback | void;
+export type RefCallback<E extends HTMLElement = HTMLElement> = (element: E) => CleanupCallback | void;
 
 export function useRefEffect<E extends HTMLElement = HTMLElement>(
   callback: RefCallback<E>,
@@ -27,7 +23,7 @@ export function useRefEffect<E extends HTMLElement = HTMLElement>(
       if (element != null) {
         const cleanup = callback(element);
 
-        if (typeof cleanup === "function") {
+        if (typeof cleanup === 'function') {
           disposeRef.current = cleanup;
         }
       }

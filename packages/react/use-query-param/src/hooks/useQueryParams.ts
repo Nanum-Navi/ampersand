@@ -1,9 +1,7 @@
-import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
 
-export function useQueryParams<
-  T extends { [key: string]: string } = { [key: string]: string }
->(): Partial<T> {
+export function useQueryParams<T extends { [key: string]: string } = { [key: string]: string }>(): Partial<T> {
   const searchParams = useSearchParams();
   const parameter: Record<string, string> = {};
 

@@ -1,21 +1,14 @@
-import { createContext, ReactNode, useContext, useMemo } from "react";
+import { createContext, ReactNode, useContext, useMemo } from 'react';
 
-type ProviderProps<ContextValuesType> =
-  | (ContextValuesType & { children: ReactNode })
-  | { children: ReactNode };
+type ProviderProps<ContextValuesType> = (ContextValuesType & { children: ReactNode }) | { children: ReactNode };
 
 export function buildContext<ContextValuesType extends object>(
   contextName: string,
   defaultContextValues?: ContextValuesType | null
 ) {
-  const Context = createContext<ContextValuesType | undefined>(
-    defaultContextValues ?? undefined
-  );
+  const Context = createContext<ContextValuesType | undefined>(defaultContextValues ?? undefined);
 
-  function Provider({
-    children,
-    ...contextValues
-  }: ProviderProps<ContextValuesType>) {
+  function Provider({ children, ...contextValues }: ProviderProps<ContextValuesType>) {
     const value = useMemo(
       () => (Object.keys(contextValues).length > 0 ? contextValues : null),
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,12 +29,10 @@ export function buildContext<ContextValuesType extends object>(
       return defaultContextValues;
     }
 
-    throw new Error(
-      `\`${contextName}Context\` must be used within \`${contextName}Provider\``
-    );
+    throw new Error(`\`${contextName}Context\` must be used within \`${contextName}Provider\``);
   }
 
-  Provider.displayName = contextName + "Provider";
+  Provider.displayName = contextName + 'Provider';
 
   return [Provider, useInnerContext] as const;
 }

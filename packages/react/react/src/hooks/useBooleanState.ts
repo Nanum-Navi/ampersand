@@ -1,8 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react';
 
-export const useBooleanState = (
-  defaultValue = false
-): readonly [boolean, () => void, () => void, () => void] => {
+export const useBooleanState = (defaultValue = false): readonly [boolean, () => void, () => void, () => void] => {
   const [bool, setBool] = useState(defaultValue);
 
   const setTrue = useCallback(() => {
@@ -14,7 +12,7 @@ export const useBooleanState = (
   }, []);
 
   const toggle = useCallback(() => {
-    setBool((b) => !b);
+    setBool(b => !b);
   }, []);
 
   return [bool, setTrue, setFalse, toggle] as const;

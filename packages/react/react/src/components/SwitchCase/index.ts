@@ -1,1 +1,1 @@
-export * from "./SwitchCase";
+export * from './SwitchCase';

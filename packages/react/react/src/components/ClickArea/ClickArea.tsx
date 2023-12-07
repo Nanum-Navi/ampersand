@@ -1,5 +1,5 @@
-import classnames from "classnames";
-import Style, { generateClassNames } from "../../utils/Style";
+import classnames from 'classnames';
+import Style, { generateClassNames } from '../../utils/Style';
 
 const noop = () => {};
 
@@ -13,12 +13,7 @@ interface Props {
   enabled?: boolean;
 }
 
-export const ClickArea = ({
-  className,
-  children,
-  onClick,
-  enabled = true,
-}: Props) => {
+export const ClickArea = ({ className, children, onClick, enabled = true }: Props) => {
   return (
     <Style css={css}>
       <a
@@ -38,7 +33,7 @@ export const ClickArea = ({
 };
 
 const CLASSNAMES = generateClassNames({
-  clickArea: "click-area",
+  clickArea: 'click-area',
   enabled: `click-area__enabled`,
 });
 

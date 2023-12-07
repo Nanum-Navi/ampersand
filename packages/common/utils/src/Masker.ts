@@ -1,5 +1,5 @@
 function maskAll(str: string) {
-  return str.replace(/./g, "*");
+  return str.replace(/./g, '*');
 }
 
 function isKoreanName(name: string) {
@@ -10,7 +10,7 @@ function maskName(name: string) {
   if (isKoreanName(name)) {
     switch (name.length) {
       case 2:
-        return name.replace(/([가-힣])([가-힣]+)/, "$1*");
+        return name.replace(/([가-힣])([가-힣]+)/, '$1*');
       default:
         return maskExceptForEdge(name, 1);
     }
@@ -27,9 +27,7 @@ function maskName(name: string) {
 function maskExceptForEdge(text: string, edgeSize: number) {
   return (
     text.slice(0, edgeSize) +
-    text
-      .slice(edgeSize, text.length - edgeSize)
-      .replace(/[a-zA-Z가-힇]/g, "*") +
+    text.slice(edgeSize, text.length - edgeSize).replace(/[a-zA-Z가-힇]/g, '*') +
     text.slice(text.length - edgeSize, text.length)
   );
 }
@@ -44,21 +42,12 @@ function isSeoulPhoneNumber(phoneNumber: string) {
 
 function maskPhoneNumber(phoneNumber: string) {
   if (isHyphenSeparated(phoneNumber)) {
-    return phoneNumber.replace(
-      /^(\d{2,3})-(\d{3,4})-(\d{4})$/,
-      (_, p1, p2, p3) => `${p1}-${maskAll(p2)}-${p3}`
-    );
+    return phoneNumber.replace(/^(\d{2,3})-(\d{3,4})-(\d{4})$/, (_, p1, p2, p3) => `${p1}-${maskAll(p2)}-${p3}`);
   }
   if (isSeoulPhoneNumber(phoneNumber)) {
-    return phoneNumber.replace(
-      /^02(\d{3,4})(\d{4})/,
-      (_, p1, p2) => `02${maskAll(p1)}${p2}`
-    );
+    return phoneNumber.replace(/^02(\d{3,4})(\d{4})/, (_, p1, p2) => `02${maskAll(p1)}${p2}`);
   }
-  return phoneNumber.replace(
-    /^(\d{3})(\d{3,4})(\d{4})/,
-    (_, p1, p2, p3) => `${p1}${maskAll(p2)}${p3}`
-  );
+  return phoneNumber.replace(/^(\d{3})(\d{3,4})(\d{4})/, (_, p1, p2, p3) => `${p1}${maskAll(p2)}${p3}`);
 }
 
 export const Masker = {

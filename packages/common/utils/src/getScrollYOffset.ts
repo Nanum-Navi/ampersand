@@ -1,4 +1,4 @@
-import { isServer } from "./device/index";
+import { isServer } from './device/index';
 
 export function getScrollYOffset(): number {
   if (isServer()) {
@@ -15,11 +15,5 @@ export function getScrollYOffset(): number {
   const documentElement = document.documentElement;
   const documentRect = documentElement.getBoundingClientRect();
 
-  return (
-    -documentRect.top ||
-    document.body.scrollTop ||
-    window.scrollY ||
-    documentElement.scrollTop ||
-    0
-  );
+  return -documentRect.top || document.body.scrollTop || window.scrollY || documentElement.scrollTop || 0;
 }

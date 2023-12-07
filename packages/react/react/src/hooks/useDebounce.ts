@@ -1,7 +1,7 @@
-import debounce from "lodash.debounce";
-import { useEffect, useMemo } from "react";
-import { usePreservedCallback } from "./usePreservedCallback";
-import { usePreservedReference } from "./usePreservedReference";
+import debounce from 'lodash.debounce';
+import { useEffect, useMemo } from 'react';
+import { usePreservedCallback } from './usePreservedCallback';
+import { usePreservedReference } from './usePreservedReference';
 
 // 타입 에러로 인한 인터페이스 선언
 interface DebouncedFunc<T extends (...args: any[]) => any> {

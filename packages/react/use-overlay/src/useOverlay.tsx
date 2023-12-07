@@ -1,7 +1,7 @@
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
-import { OverlayContext } from "./OverlayProvider";
-import { OverlayController, OverlayControlRef } from "./OverlayController";
-import { CreateOverlayElement } from "./types";
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { OverlayContext } from './OverlayProvider';
+import { OverlayController, OverlayControlRef } from './OverlayController';
+import { CreateOverlayElement } from './types';
 
 let elementId = 1;
 
@@ -13,7 +13,7 @@ export function useOverlay({ exitOnUnmount = true }: Options = {}) {
   const context = useContext(OverlayContext);
 
   if (context == null) {
-    throw new Error("useOverlay is only available within OverlayProvider.");
+    throw new Error('useOverlay is only available within OverlayProvider.');
   }
 
   const { mount, unmount } = context;

@@ -1,4 +1,4 @@
-import { clipProgress } from "./clipProgress";
+import { clipProgress } from './clipProgress';
 
 interface Options {
   /**
@@ -27,12 +27,7 @@ interface Options {
  *
  * @returns 잘린 progress 값
  */
-export function sliceProgress({
-  progress,
-  start = 0,
-  end = 1,
-  clip = true,
-}: Options) {
+export function sliceProgress({ progress, start = 0, end = 1, clip = true }: Options) {
   if (end === 0) {
     return 1;
   }

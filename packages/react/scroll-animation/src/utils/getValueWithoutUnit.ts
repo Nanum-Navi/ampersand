@@ -10,9 +10,7 @@
 export function getValueWithoutUnit(stringValue: string) {
   const numberValue = parseInt(stringValue);
   if (isNaN(numberValue)) {
-    throw new Error(
-      `올바른 형식인지 확인해주세요. stringValue: ${stringValue}`
-    );
+    throw new Error(`올바른 형식인지 확인해주세요. stringValue: ${stringValue}`);
   }
   return numberValue;
 }

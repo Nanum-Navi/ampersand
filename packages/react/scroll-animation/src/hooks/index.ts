@@ -1,2 +1,2 @@
-export * from "./useScrollProgress";
-export * from "./useWindowScrollPosition";
+export * from './useScrollProgress';
+export * from './useWindowScrollPosition';

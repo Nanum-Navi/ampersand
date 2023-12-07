@@ -1,5 +1,5 @@
-import { css } from "styled-components";
-import { normalize } from "styled-normalize";
+import { css } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const globalStyle = css`
   @font-face {
@@ -7,8 +7,7 @@ const globalStyle = css`
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
-      format("woff");
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
   }
 
   @font-face {
@@ -16,8 +15,7 @@ const globalStyle = css`
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff")
-      format("woff");
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff') format('woff');
   }
 
   @font-face {
@@ -25,107 +23,106 @@ const globalStyle = css`
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff")
-      format("woff");
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 900;
     font-display: swap;
-    src: local("Pretendard Black"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Black.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Black.woff")
-        format("woff");
+    src: local('Pretendard Black'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Black.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Black.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 800;
     font-display: swap;
-    src: local("Pretendard ExtraBold"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-ExtraBold.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-ExtraBold.woff")
-        format("woff");
+    src: local('Pretendard ExtraBold'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-ExtraBold.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-ExtraBold.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 700;
     font-display: swap;
-    src: local("Pretendard Bold"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Bold.woff")
-        format("woff");
+    src: local('Pretendard Bold'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Bold.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 600;
     font-display: swap;
-    src: local("Pretendard SemiBold"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-SemiBold.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-SemiBold.woff")
-        format("woff");
+    src: local('Pretendard SemiBold'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-SemiBold.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-SemiBold.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 500;
     font-display: swap;
-    src: local("Pretendard Medium"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Medium.woff")
-        format("woff");
+    src: local('Pretendard Medium'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Medium.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 400;
     font-display: swap;
-    src: local("Pretendard Regular"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Regular.woff")
-        format("woff");
+    src: local('Pretendard Regular'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Regular.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 300;
     font-display: swap;
-    src: local("Pretendard Light"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Light.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Light.woff")
-        format("woff");
+    src: local('Pretendard Light'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Light.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Light.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 200;
     font-display: swap;
-    src: local("Pretendard ExtraLight"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-ExtraLight.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-ExtraLight.woff")
-        format("woff");
+    src: local('Pretendard ExtraLight'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-ExtraLight.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-ExtraLight.woff')
+        format('woff');
   }
 
   @font-face {
     font-family: Pretendard;
     font-weight: 100;
     font-display: swap;
-    src: local("Pretendard Thin"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Thin.woff2")
-        format("woff2"),
-      url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Thin.woff")
-        format("woff");
+    src: local('Pretendard Thin'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Thin.woff2')
+        format('woff2'),
+      url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff/Pretendard-Thin.woff')
+        format('woff');
   }
 
   ${normalize}

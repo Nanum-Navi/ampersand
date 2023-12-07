@@ -1,35 +1,33 @@
-const path = require("path");
-const babel = require("@rollup/plugin-babel").default;
-const commonjs = require("@rollup/plugin-commonjs");
-const json = require("@rollup/plugin-json");
-const resolve = require("@rollup/plugin-node-resolve").default;
-const builtins = require("builtin-modules");
+const path = require('path');
+const babel = require('@rollup/plugin-babel').default;
+const commonjs = require('@rollup/plugin-commonjs');
+const json = require('@rollup/plugin-json');
+const resolve = require('@rollup/plugin-node-resolve').default;
+const builtins = require('builtin-modules');
 
 exports.generateRollupConfig = function generateRollupConfig({ packageDir }) {
-  const packageJSON = require(path.join(packageDir, "package.json"));
+  const packageJSON = require(path.join(packageDir, 'package.json'));
 
   if (packageJSON.exports == null) {
-    throw new Error("package.json의 exports 필드를 정의해주세요.");
+    throw new Error('package.json의 exports 필드를 정의해주세요.');
   }
 
-  const entrypoints = Object.keys(packageJSON.exports).filter(
-    (x) => x !== "./package.json"
-  );
+  const entrypoints = Object.keys(packageJSON.exports).filter(x => x !== './package.json');
 
-  const external = (pkg) => {
+  const external = pkg => {
     const dependencies = Object.keys(packageJSON.dependencies || {});
     const peerDependencies = Object.keys(packageJSON.peerDependencies || {});
     const externals = [...dependencies, ...peerDependencies, ...builtins];
 
-    return externals.some((externalPkg) => {
+    return externals.some(externalPkg => {
       return pkg.startsWith(externalPkg);
     });
   };
 
-  const extensions = [".js", ".jsx", ".ts", ".tsx"];
+  const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
   function buildJS(input, output, format) {
-    const isESMFormat = format === "es";
+    const isESMFormat = format === 'es';
 
     return {
       input,
@@ -41,9 +39,7 @@ exports.generateRollupConfig = function generateRollupConfig({ packageDir }) {
             ? {
                 dir: path.dirname(output),
                 entryFileNames: `[name]${path.extname(output)}`,
-                preserveModulesRoot: isESMFormat
-                  ? path.dirname(input)
-                  : undefined,
+                preserveModulesRoot: isESMFormat ? path.dirname(input) : undefined,
               }
             : { file: output }),
         },
@@ -55,8 +51,8 @@ exports.generateRollupConfig = function generateRollupConfig({ packageDir }) {
         commonjs(),
         babel({
           extensions,
-          babelHelpers: "bundled",
-          rootMode: "upward",
+          babelHelpers: 'bundled',
+          rootMode: 'upward',
         }),
         json(),
       ],
@@ -65,48 +61,33 @@ exports.generateRollupConfig = function generateRollupConfig({ packageDir }) {
   }
 
   function buildCJS(input, output) {
-    return buildJS(input, output, "cjs");
+    return buildJS(input, output, 'cjs');
   }
 
   function buildESM(input, output) {
-    return buildJS(input, output, "es");
+    return buildJS(input, output, 'es');
   }
 
-  return entrypoints.flatMap((entrypoint) => {
+  return entrypoints.flatMap(entrypoint => {
     const cjsEntrypoint = path.resolve(
       packageDir,
-      ensure(
-        handleCJSEntrypoint(packageJSON.exports, entrypoint),
-        "CJS entrypoint not found"
-      )
+      ensure(handleCJSEntrypoint(packageJSON.exports, entrypoint), 'CJS entrypoint not found')
     );
     const cjsOutput = path.resolve(
       packageDir,
-      ensure(
-        packageJSON?.publishConfig.exports?.[entrypoint].require,
-        "CJS outputfile not found"
-      )
+      ensure(packageJSON?.publishConfig.exports?.[entrypoint].require, 'CJS outputfile not found')
     );
 
     const esmEntrypoint = path.resolve(
       packageDir,
-      ensure(
-        handleESMEntrypoint(packageJSON.exports, entrypoint),
-        "ESM entrypoint not found"
-      )
+      ensure(handleESMEntrypoint(packageJSON.exports, entrypoint), 'ESM entrypoint not found')
     );
     const esmOutput = path.resolve(
       packageDir,
-      ensure(
-        packageJSON?.publishConfig.exports?.[entrypoint].import,
-        "ESM outputfile not found"
-      )
+      ensure(packageJSON?.publishConfig.exports?.[entrypoint].import, 'ESM outputfile not found')
     );
 
-    return [
-      buildCJS(cjsEntrypoint, cjsOutput),
-      buildESM(esmEntrypoint, esmOutput),
-    ];
+    return [buildCJS(cjsEntrypoint, cjsOutput), buildESM(esmEntrypoint, esmOutput)];
   });
 };
 
@@ -115,7 +96,7 @@ function handleCJSEntrypoint(exports, entrypoint) {
     return exports?.[entrypoint].require;
   }
 
-  if (typeof exports?.[entrypoint] === "string") {
+  if (typeof exports?.[entrypoint] === 'string') {
     return exports?.[entrypoint];
   }
 
@@ -127,7 +108,7 @@ function handleESMEntrypoint(exports = {}, entrypoint) {
     return exports?.[entrypoint].import;
   }
 
-  if (typeof exports?.[entrypoint] === "string") {
+  if (typeof exports?.[entrypoint] === 'string') {
     return exports?.[entrypoint];
   }
 

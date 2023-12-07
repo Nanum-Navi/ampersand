@@ -1,5 +1,5 @@
-import { Children, cloneElement, ReactElement } from "react";
-import { useDebounce } from "../../hooks/useDebounce";
+import { Children, cloneElement, ReactElement } from 'react';
+import { useDebounce } from '../../hooks/useDebounce';
 
 interface Props {
   /**
@@ -17,16 +17,11 @@ interface Props {
   capture?: string;
 }
 
-export function DebounceClick({
-  capture = "onClick",
-  options,
-  children,
-  wait,
-}: Props) {
+export function DebounceClick({ capture = 'onClick', options, children, wait }: Props) {
   const child = Children.only(children);
   const debouncedCallback = useDebounce(
     (...args: any[]) => {
-      if (child.props && typeof child.props[capture] === "function") {
+      if (child.props && typeof child.props[capture] === 'function') {
         return child.props[capture](...args);
       }
     },

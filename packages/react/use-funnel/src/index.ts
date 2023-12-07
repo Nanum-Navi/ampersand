@@ -1,1 +1,1 @@
-export * from "./useFunnel";
+export * from './useFunnel';

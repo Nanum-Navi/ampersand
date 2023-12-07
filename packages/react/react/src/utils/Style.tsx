@@ -1,12 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-export default function Style({
-  css,
-  children,
-}: {
-  css: string;
-  children?: ReactNode;
-}) {
+export default function Style({ css, children }: { css: string; children?: ReactNode }) {
   return (
     <>
       <style type="text/css">{css}</style>
@@ -14,12 +8,7 @@ export default function Style({
     </>
   );
 }
-const PREFIX = "nanumnavi-react__";
-export function generateClassNames<T extends Record<string, string>>(
-  classNames: T
-) {
-  return Object.keys(classNames).reduce(
-    (acc, key) => ({ ...acc, [key]: `${PREFIX}${classNames[key]}` }),
-    {}
-  ) as T;
+const PREFIX = 'nanumnavi-react__';
+export function generateClassNames<T extends Record<string, string>>(classNames: T) {
+  return Object.keys(classNames).reduce((acc, key) => ({ ...acc, [key]: `${PREFIX}${classNames[key]}` }), {}) as T;
 }

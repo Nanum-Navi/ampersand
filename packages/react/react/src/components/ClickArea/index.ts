@@ -1,1 +1,1 @@
-export * from "./ClickArea";
+export * from './ClickArea';

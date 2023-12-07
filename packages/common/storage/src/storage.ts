@@ -34,7 +34,7 @@ class LocalStorage implements Storage {
 
     // 사용자가 쿠키 차단을 하는 경우 LocalStorage '접근' 시에 예외가 발생합니다.
     try {
-      localStorage.setItem(TEST_KEY, "test");
+      localStorage.setItem(TEST_KEY, 'test');
       localStorage.removeItem(TEST_KEY);
       return true;
     } catch (err) {
@@ -65,7 +65,7 @@ class SessionStorage implements Storage {
 
     // sessionStorage를 사용할 수 없는 경우에 대응합니다.
     try {
-      sessionStorage.setItem(TEST_KEY, "test");
+      sessionStorage.setItem(TEST_KEY, 'test');
       sessionStorage.removeItem(TEST_KEY);
       return true;
     } catch (err) {
@@ -94,7 +94,7 @@ function generateTestKey() {
   return new Array(4)
     .fill(null)
     .map(() => Math.random().toString(36).slice(2))
-    .join("");
+    .join('');
 }
 
 export function generateStorage(): Storage {

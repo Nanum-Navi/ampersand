@@ -1,18 +1,13 @@
-import { isNotNil } from "@nanumnavi/utils";
-import { useCallback, useEffect, useRef } from "react";
+import { isNotNil } from '@nanumnavi/utils';
+import { useCallback, useEffect, useRef } from 'react';
 
 type OneOrMore<T> = T | T[];
 
-export function useOutsideClickEffect(
-  container: OneOrMore<HTMLElement | null>,
-  callback: () => void
-) {
+export function useOutsideClickEffect(container: OneOrMore<HTMLElement | null>, callback: () => void) {
   const containers = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
-    containers.current = (
-      Array.isArray(container) ? container : [container]
-    ).filter(isNotNil);
+    containers.current = (Array.isArray(container) ? container : [container]).filter(isNotNil);
   }, [container]);
 
   const handleDocumentClick = useCallback(
@@ -25,7 +20,7 @@ export function useOutsideClickEffect(
         return;
       }
 
-      if (containers.current.some((x) => x.contains(target as Node))) {
+      if (containers.current.some(x => x.contains(target as Node))) {
         return;
       }
 
@@ -35,12 +30,12 @@ export function useOutsideClickEffect(
   );
 
   useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
-    document.addEventListener("touchstart", handleDocumentClick);
+    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('touchstart', handleDocumentClick);
 
     return () => {
-      document.removeEventListener("click", handleDocumentClick);
-      document.removeEventListener("touchstart", handleDocumentClick);
+      document.removeEventListener('click', handleDocumentClick);
+      document.removeEventListener('touchstart', handleDocumentClick);
     };
   });
 }

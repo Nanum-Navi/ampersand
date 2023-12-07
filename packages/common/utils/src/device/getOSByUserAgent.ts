@@ -1,4 +1,4 @@
-import { isServer } from "./isServer";
+import { isServer } from './isServer';
 
 export function getOSByUserAgent() {
   if (isServer()) {
@@ -8,14 +8,14 @@ export function getOSByUserAgent() {
   const isIos = window.navigator.userAgent.match(/ipad|iphone/i) !== null;
 
   if (isIos) {
-    return "ios";
+    return 'ios';
   }
 
   const isAndroid = window.navigator.userAgent.match(/Android/i) !== null;
 
   if (isAndroid) {
-    return "android";
+    return 'android';
   }
 
-  return "web";
+  return 'web';
 }
