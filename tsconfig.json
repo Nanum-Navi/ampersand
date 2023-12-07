@@ -36,5 +36,5 @@
     "allowJs": false,
     "skipLibCheck": true
   },
-  "exclude": ["**/dist/*", "**/esm/*", ".eslintrc.js"]
+  "exclude": ["**/dist/*", "**/esm/*"]
 }

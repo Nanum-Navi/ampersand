@@ -1,0 +1,84 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.1.3",
+  "deps": {
+    "styled-components": "^6.1.1",
+    "styled-normalize": "^8.1.0",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
+    "@babel/preset-typescript": "^7.23.3",
+    "@babel/runtime": "^7.23.5",
+    "@nanumnavi/rollup-config": "workspace:^1.0.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__preset-env": "^7.9.6",
+    "rollup": "^2.77.0",
+    "typescript": "4.8.3"
+  },
+  "pathMappings": {
+    "styled-components": [
+      "styled-components.d.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".npmignore",
+        "hash": "14708054176351730905"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "9923566316671914581"
+      },
+      {
+        "file": "README.md",
+        "hash": "11195941528709471757"
+      },
+      {
+        "file": "babel.config.js",
+        "hash": "3957798060304018249"
+      },
+      {
+        "file": "package.json",
+        "hash": "5480929558335122770"
+      },
+      {
+        "file": "rollup.config.js",
+        "hash": "14390631056859851750"
+      },
+      {
+        "file": "src/globalStyle.ts",
+        "hash": "9547706249935277056"
+      },
+      {
+        "file": "src/index.ts",
+        "hash": "4349958713881997352"
+      },
+      {
+        "file": "src/styled-components.d.ts",
+        "hash": "8763018380898720935"
+      },
+      {
+        "file": "src/styled.ts",
+        "hash": "1188418512989182462"
+      },
+      {
+        "file": "src/theme.ts",
+        "hash": "3774575882441012232"
+      },
+      {
+        "file": "tsconfig.build.json",
+        "hash": "1168399966631354677"
+      },
+      {
+        "file": "tsconfig.esm.json",
+        "hash": "4894289902249196399"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "12220194200962262609"
+      }
+    ]
+  }
+}

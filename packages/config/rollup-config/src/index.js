@@ -17,13 +17,9 @@ exports.generateRollupConfig = function generateRollupConfig({ packageDir }) {
   );
 
   const external = (pkg) => {
-    const externals = [
-      ...Object.keys({
-        ...packageJSON.dependencies,
-        ...packageJSON.peerDependencies,
-      }),
-      ...builtins,
-    ];
+    const dependencies = Object.keys(packageJSON.dependencies || {});
+    const peerDependencies = Object.keys(packageJSON.peerDependencies || {});
+    const externals = [...dependencies, ...peerDependencies, ...builtins];
 
     return externals.some((externalPkg) => {
       return pkg.startsWith(externalPkg);
@@ -34,6 +30,7 @@ exports.generateRollupConfig = function generateRollupConfig({ packageDir }) {
 
   function buildJS(input, output, format) {
     const isESMFormat = format === "es";
+
     return {
       input,
       external,
