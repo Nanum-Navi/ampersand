@@ -1,9 +1,9 @@
 import { assert } from '@nanumnavi/assert';
 import { safeSessionStorage } from '@nanumnavi/storage';
-import { useQueryParam } from '@nanumnavi/use-query-param';
+import { useQueryParam, useQueryParams } from '@nanumnavi/use-query-param';
 import { QS } from '@nanumnavi/utils';
 import deepEqual from 'fast-deep-equal';
-import { useRouter } from 'next/router.js';
+import { useRouter, usePathname } from 'next/navigation';
 import { SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Funnel, FunnelProps, Step, StepProps } from './Funnel';
@@ -48,6 +48,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
   ];
 } => {
   const router = useRouter();
+  const params = useQueryParams();
   const stepQueryKey = options?.stepQueryKey ?? DEFAULT_STEP_QUERY_KEY;
 
   assert(steps.length > 0, 'steps가 비어있습니다.');
@@ -79,7 +80,7 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
       const { preserveQuery = true, query = {} } = setStepOptions ?? {};
 
       const url = `${QS.create({
-        ...(preserveQuery ? router.query : undefined),
+        ...(preserveQuery ? params : undefined),
         ...query,
         [stepQueryKey]: step,
       })}`;
@@ -88,13 +89,13 @@ export const useFunnel = <Steps extends NonEmptyArray<string>>(
 
       switch (setStepOptions?.stepChangeType) {
         case 'replace':
-          router.replace(url, undefined, {
+          router.replace(url, {
             shallow: true,
           });
           return;
         case 'push':
         default:
-          router.push(url, undefined, {
+          router.push(url, {
             shallow: true,
           });
           return;
@@ -218,9 +219,9 @@ function useFunnelState<T extends Record<string, any>>(
   defaultValue: Partial<T>,
   options?: { storage?: FunnelStorage<T> }
 ) {
-  const { pathname, basePath } = useRouter();
+  const pathname = usePathname();
 
-  const storage = options?.storage ?? createFunnelStorage<T>(createFunnelStateId(`${basePath}${pathname}`));
+  const storage = options?.storage ?? createFunnelStorage<T>(createFunnelStateId(`${pathname}`));
   const persistentStorage = useRef(storage).current;
 
   const initialState = useQuery({
