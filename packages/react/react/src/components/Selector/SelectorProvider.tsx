@@ -12,7 +12,7 @@ const [SelectorProvider, useSelector] = buildContext<SelectorContextProps>('Sele
 
 interface SelectorListProps extends PropsWithChildren {
   defaultSelectedId?: number;
-  onChange: (id: number) => void;
+  onChange?: (id: number) => void;
 }
 
 export const Selector = (props: SelectorListProps) => {
@@ -21,7 +21,7 @@ export const Selector = (props: SelectorListProps) => {
   const [selectedId, setSelectedId] = useState<number>(defaultSelectedId);
 
   useEffect(() => {
-    onChange(selectedId);
+    onChange && onChange(selectedId);
   }, [selectedId, onChange]);
 
   return (
