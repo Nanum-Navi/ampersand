@@ -1,6 +1,6 @@
 {
   "name": "@nanumnavi/react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.5",
-    "@nanumnavi/storage": "^1.0.1",
-    "@nanumnavi/style": "^1.0.1",
-    "@nanumnavi/utils": "^1.0.2",
+    "@nanumnavi/storage": "^1.0.2",
+    "@nanumnavi/style": "^1.0.2",
+    "@nanumnavi/utils": "^1.0.3",
     "classnames": "^2.3.1",
     "lodash.debounce": "^4.0.8"
   },
@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.18.6",
-    "@nanumnavi/rollup-config": "^1.0.1",
+    "@nanumnavi/rollup-config": "^1.0.2",
     "@types/babel__core": "^7.20.5",
     "@types/babel__preset-env": "^7.9.6",
     "@types/lodash.debounce": "^4",

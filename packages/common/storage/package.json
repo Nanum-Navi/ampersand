@@ -1,6 +1,6 @@
 {
   "name": "@nanumnavi/storage",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -27,7 +27,7 @@
     "@babel/core": "^7.23.5",
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-typescript": "^7.23.3",
-    "@nanumnavi/rollup-config": "^1.0.1",
+    "@nanumnavi/rollup-config": "^1.0.2",
     "@types/babel__core": "^7.20.5",
     "@types/babel__preset-env": "^7.9.6",
     "rollup": "^2.77.0",
