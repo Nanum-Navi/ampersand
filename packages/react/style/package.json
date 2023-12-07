@@ -28,7 +28,7 @@
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-typescript": "^7.23.3",
     "@babel/runtime": "^7.23.5",
-    "@nanumnavi/rollup-config": "workspace:^1.0.1",
+    "@nanumnavi/rollup-config": "^1.0.1",
     "@types/babel__core": "^7.20.5",
     "@types/babel__preset-env": "^7.9.6",
     "rollup": "^2.77.0",
@@ -49,5 +49,5 @@
     "module": "./esm/index.mjs",
     "types": "./dist/index.d.ts"
   },
-  "gitHead": "e83b7af439faf6f94a3be212c0ef059223e583a7"
+  "gitHead": "7a77be318181e685652a33074fd77f27ef66faef"
 }
