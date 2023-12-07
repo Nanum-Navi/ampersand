@@ -1,6 +1,6 @@
 {
   "name": "@nanumnavi/react-query",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "sideEffects": false,
   "exports": {
     ".": {
