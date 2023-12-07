@@ -1,6 +1,6 @@
 {
   "name": "@nanumnavi/rollup-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.js",
   "dependencies": {
     "@babel/core": "^7.19.3",
