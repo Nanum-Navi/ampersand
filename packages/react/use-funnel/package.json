@@ -26,6 +26,7 @@
     "@nanumnavi/storage": "workspace:^1.0.2",
     "@nanumnavi/use-query-param": "workspace:^1.0.2",
     "@nanumnavi/utils": "workspace:^1.0.3",
+    "@tanstack/react-query": "^5.12.2",
     "fast-deep-equal": "^3.1.3"
   },
   "devDependencies": {
@@ -43,15 +44,13 @@
     "next": "14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.1",
     "rollup": "^2.77.0",
     "typescript": "4.8.3"
   },
   "peerDependencies": {
     "next": "^13 || ^14",
     "react": "^16.8 || ^17 || ^18",
-    "react-dom": "^16.8 || ^17 || ^18",
-    "react-query": "^3"
+    "react-dom": "^16.8 || ^17 || ^18"
   },
   "publishConfig": {
     "access": "public",
