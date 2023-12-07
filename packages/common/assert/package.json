@@ -1,6 +1,6 @@
 {
   "name": "@nanumnavi/assert",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "sideEffects": false,
   "exports": {
     ".": {
@@ -21,13 +21,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.5",
-    "@nanumnavi/utils": "workspace:^1.0.2"
+    "@nanumnavi/utils": "workspace:^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-typescript": "^7.23.3",
-    "@nanumnavi/rollup-config": "workspace:^1.0.0",
+    "@nanumnavi/rollup-config": "workspace:^1.0.1",
     "@types/babel__core": "^7.20.5",
     "@types/babel__preset-env": "^7.9.6",
     "rollup": "^2.77.0",
