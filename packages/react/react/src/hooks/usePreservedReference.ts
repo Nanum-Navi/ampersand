@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-type NotNullishValue = {};
+type NotNullishValue = NonNullable<object>;
 
 export function usePreservedReference<T extends NotNullishValue>(
   value: T,

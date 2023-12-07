@@ -13,5 +13,6 @@ export function useDidUpdate<F extends () => (() => void) | void>(
     }
 
     return effect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

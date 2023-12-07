@@ -15,17 +15,23 @@
     "esm"
   ],
   "scripts": {
-    "build": "rm -rf dist esm && tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir dist && cp ./src/styled-components.d.ts ./dist",
+    "build": "rm -rf dist esm && tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --declarationDir dist && rollup -c rollup.config.js && cp ./src/styled-components.d.ts ./dist",
     "prepack": "pnpm build",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "styled-components": "^6.1.1",
+    "styled-normalize": "^8.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.5",
     "@babel/preset-env": "^7.23.5",
     "@babel/preset-typescript": "^7.23.3",
     "@babel/runtime": "^7.23.5",
+    "@nanumnavi/rollup-config": "workspace:^1.0.0",
     "@types/babel__core": "^7.20.5",
     "@types/babel__preset-env": "^7.9.6",
+    "rollup": "^2.77.0",
     "typescript": "4.8.3"
   },
   "publishConfig": {
@@ -43,10 +49,5 @@
     "module": "./esm/index.mjs",
     "types": "./dist/index.d.ts"
   },
-  "readme": "ERROR: No README data found!",
-  "gitHead": "e83b7af439faf6f94a3be212c0ef059223e583a7",
-  "dependencies": {
-    "styled-components": "^6.1.1",
-    "styled-normalize": "^8.1.0"
-  }
+  "gitHead": "e83b7af439faf6f94a3be212c0ef059223e583a7"
 }

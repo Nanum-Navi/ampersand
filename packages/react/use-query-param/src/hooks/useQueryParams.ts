@@ -13,5 +13,6 @@ export function useQueryParams<
     });
 
     return parameter as T;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parameter]);
 }

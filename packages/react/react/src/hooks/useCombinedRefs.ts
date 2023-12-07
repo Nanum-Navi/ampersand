@@ -13,5 +13,6 @@ export function useCombinedRefs<T>(
         (ref as MutableRefObject<T>).current = value;
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, refs);
 }

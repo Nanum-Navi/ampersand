@@ -12,7 +12,6 @@ export type RefCallback<E extends HTMLElement = HTMLElement> = (
   element: E
 ) => CleanupCallback | void;
 
-/** @tossdocs-ignore */
 export function useRefEffect<E extends HTMLElement = HTMLElement>(
   callback: RefCallback<E>,
   deps: DependencyList
