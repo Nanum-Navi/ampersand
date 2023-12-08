@@ -1,3 +1,5 @@
+import { DefaultTheme } from 'styled-components';
+
 const color = {
   white: '#FFFFFF',
   black: '#3c3c32',
@@ -46,7 +48,7 @@ const font = {
 } as const;
 
 // 테마 객체
-export const theme = {
+export const theme: DefaultTheme = {
   color,
   newColor,
   fontRN,
