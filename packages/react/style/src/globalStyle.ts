@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-const globalStyle = css`
+export const globalStyle = css`
   @font-face {
     font-family: SBAggroB;
     font-weight: normal;
@@ -199,5 +199,3 @@ const globalStyle = css`
     outline: none;
   }
 `;
-
-export default globalStyle;

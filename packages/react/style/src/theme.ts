@@ -46,11 +46,9 @@ const font = {
 } as const;
 
 // 테마 객체
-const theme = {
+export const theme = {
   color,
   newColor,
   fontRN,
   font,
 };
-
-export default theme;
