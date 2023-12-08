@@ -5,7 +5,7 @@ import { QS } from '@nanumnavi/utils';
 import deepEqual from 'fast-deep-equal';
 import { useRouter, usePathname } from 'next/navigation';
 import { SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Funnel, FunnelProps, Step, StepProps } from './Funnel';
 import { NonEmptyArray } from './models';
 
@@ -224,7 +224,7 @@ function useFunnelState<T extends Record<string, any>>(
   const storage = options?.storage ?? createFunnelStorage<T>(createFunnelStateId(`${pathname}`));
   const persistentStorage = useRef(storage).current;
 
-  const initialState = useSuspenseQuery({
+  const initialState = useQuery({
     queryKey: [],
     queryFn: () => {
       return persistentStorage.get();
