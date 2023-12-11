@@ -7,18 +7,19 @@ export interface SelectorProps {
   id: number;
   text: string;
   render?: ReactNode;
+  icon?: ReactNode;
 }
 
 const SelectorItem = (props: SelectorProps) => {
-  const { id, text, render } = props;
+  const { id, text, render, icon } = props;
 
   const { selectedId, setSelectedId } = useSelector();
+
+  const isSelected = selectedId === id;
 
   const onSelect = () => {
     setSelectedId(id);
   };
-
-  const isSelected = selectedId === id;
 
   return (
     <SelectorWrapper>
@@ -41,8 +42,9 @@ const SelectorItem = (props: SelectorProps) => {
           </svg>
         )}
         <SelectorText>{text}</SelectorText>
+        {icon && <SelectorIcon>{icon}</SelectorIcon>}
       </SelectorHead>
-      <div style={{ display: isSelected ? 'block' : 'none' }}>{render}</div>
+      {render && <div style={{ display: isSelected ? 'block' : 'none' }}>{render}</div>}
     </SelectorWrapper>
   );
 };
@@ -71,3 +73,5 @@ const SelectorText = styled.p`
   font-weight: 500;
   color: ${({ theme }) => theme.newColor.grey800};
 `;
+
+const SelectorIcon = styled.span``;
